@@ -49,6 +49,7 @@
     .avatar {
       width: 120px; height: 120px; margin: 0 auto 22px;
       border-radius: 50%;
+      object-fit: cover; object-position: center;
       background: linear-gradient(135deg, var(--main), #ffb86b);
       color: #fff; font-size: 52px; font-weight: 700;
       display: flex; align-items: center; justify-content: center;
@@ -125,7 +126,7 @@
   <main>
     <!-- ================= 首屏 ================= -->
     <header class="hero">
-     <img class="avatar" src="me.png" alt="我的头像">
+     <img class="avatar" src="me.jpg" alt="我的头像">
       <h1>你好，我是 Sunflower-Li001</h1>  
       <div class="typing" id="typing"></div>  <!-- 打字机效果，文字在下面 JS 里改 -->
       <a class="btn btn-primary" href="#projects">看看我的项目</a>
