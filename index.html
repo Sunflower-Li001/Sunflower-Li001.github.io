@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sunflower-Li001 的个人主页</title>
+  <style>
+    /* ============ 全局样式（看不懂没关系，不用改这里） ============ */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --main: #6d5dfc;          /* 主题色（想换颜色可以改这里） */
+      --main-light: #9d8bff;
+      --bg: #f6f7fb;
+      --text: #2b2b3a;
+      --text-light: #6a6a80;
+      --card: #ffffff;
+      --radius: 14px;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: "Segoe UI", "Microsoft YaHei", "PingFang SC", system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+    a { color: var(--main); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* 顶部导航 */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 99;
+      background: rgba(255,255,255,.85);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid #ececf4;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 12px 24px;
+    }
+    nav .logo { font-weight: 700; color: var(--main); font-size: 18px; }
+    nav .links a { margin-left: 18px; color: var(--text-light); font-size: 15px; }
+    nav .links a:hover { color: var(--main); text-decoration: none; }
+
+    main { max-width: 860px; margin: 0 auto; padding: 0 20px; }
+
+    /* 首屏（大标题区域） */
+    .hero {
+      padding: 150px 0 70px;
+      text-align: center;
+    }
+    .avatar {
+      width: 120px; height: 120px; margin: 0 auto 22px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--main), #ffb86b);
+      color: #fff; font-size: 52px; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 8px 24px rgba(109,93,252,.35);
+    }
+    .hero h1 { font-size: 42px; margin-bottom: 8px; }
+    .typing {
+      color: var(--main); font-size: 20px; min-height: 34px; margin-bottom: 26px;
+    }
+    .typing::after { content: "|"; animation: blink .8s infinite; }
+    @keyframes blink { 50% { opacity: 0; } }
+    .btn {
+      display: inline-block; padding: 11px 26px; border-radius: 999px;
+      font-size: 15px; transition: .2s;
+    }
+    .btn-primary { background: var(--main); color: #fff; margin-right: 12px; }
+    .btn-primary:hover { background: var(--main-light); text-decoration: none; }
+    .btn-ghost { border: 1.5px solid var(--main); color: var(--main); }
+    .btn-ghost:hover { background: var(--main); color: #fff; text-decoration: none; }
+
+    section { padding: 46px 0; }
+    section h2 {
+      font-size: 26px; margin-bottom: 8px;
+      padding-left: 12px; border-left: 5px solid var(--main);
+    }
+    .sub { color: var(--text-light); margin-bottom: 24px; font-size: 15px; }
+    .card {
+      background: var(--card); border-radius: var(--radius);
+      padding: 22px 24px; margin-bottom: 18px;
+      box-shadow: 0 3px 14px rgba(40,40,80,.06);
+      transition: transform .2s;
+    }
+    .card:hover { transform: translateY(-3px); }
+
+    /* 技能标签 */
+    .skills { display: flex; flex-wrap: wrap; gap: 10px; }
+    .chip {
+      background: #efeaff; color: var(--main);
+      padding: 7px 16px; border-radius: 999px; font-size: 14px;
+    }
+
+    /* 项目卡片 */
+    .project .tag { font-size: 13px; color: var(--main); font-weight: 600; }
+
+    footer {
+      text-align: center; padding: 40px 20px; color: var(--text-light); font-size: 14px;
+      border-top: 1px solid #ececf4;
+    }
+
+    /* 滚动显现动画 */
+    .fade { opacity: 0; transform: translateY(24px); transition: .7s; }
+    .fade.show { opacity: 1; transform: none; }
+
+    /* 手机端适配 */
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 30px; }
+      nav .links a { margin-left: 12px; font-size: 14px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ================= 导航栏 ================= -->
+  <nav>
+    <div class="logo">Sunflower-Li001</div>   <!-- 【★改这里】换成你喜欢的名字 -->
+    <div class="links">
+      <a href="#about">关于我</a>
+      <a href="#skills">技能</a>
+      <a href="#projects">项目</a>
+      <a href="#contact">联系我</a>
+    </div>
+  </nav>
+
+  <main>
+    <!-- ================= 首屏 ================= -->
+    <header class="hero">
+      <div class="avatar">S</div>  <!-- 【★改这里】字母换成你名字开头；想用照片就把这行换成 <img src="你的照片.jpg"> 样式 -->
+      <h1>你好，我是 Sunflower-Li001</h1>  <!-- 【★改这里】你的名字/昵称 -->
+      <div class="typing" id="typing"></div>  <!-- 打字机效果，文字在下面 JS 里改 -->
+      <a class="btn btn-primary" href="#projects">看看我的项目</a>
+      <a class="btn btn-ghost" href="mailto:你的邮箱@example.com">联系我</a>  <!-- 【★改这里】换成你的邮箱 -->
+    </header>
+
+    <!-- ================= 关于我 ================= -->
+    <section id="about" class="fade">
+      <h2>关于我</h2>
+      <p class="sub">About Me</p>
+      <div class="card">
+        <p>
+          <!-- 【★改这里】用几句话介绍自己，例如：-->
+          我是一名编程初学者，正在 GitHub 上学习如何做出自己的第一个项目。
+          平时喜欢（写你的爱好，比如：听音乐、看电影、研究 AI 工具）。
+          这个网站就是我的第一个作品，我会一点点把它做得更好！
+        </p>
+      </div>
+    </section>
+
+    <!-- ================= 技能 ================= -->
+    <section id="skills" class="fade">
+      <h2>技能</h2>
+      <p class="sub">Skills（点下方标签可自己增删，如"正在学习"）</p>
+      <div class="skills">
+        <span class="chip">HTML（学习中）</span>  <!-- 【★改这里】增删你的技能 -->
+        <span class="chip">CSS（学习中）</span>
+        <span class="chip">JavaScript（即将学习）</span>
+        <span class="chip">Git / GitHub（新手上路）</span>
+        <span class="chip">AI 工具爱好者</span>
+      </div>
+    </section>
+
+    <!-- ================= 我的项目 ================= -->
+    <section id="projects" class="fade">
+      <h2>我的项目</h2>
+      <p class="sub">Projects（以后每做一个项目就在这里加一张卡片）</p>
+
+      <div class="card project">
+        <p class="tag">🌻 第一个项目 · 个人主页</p>
+        <h3>这个网站就是我的第一个项目</h3>
+        <p>用 HTML + CSS 做的个人主页，部署在 GitHub Pages 上。
+          以后我的新作品都会在这里展示。</p>
+      </div>
+
+      <!-- 【★以后做新项目时，复制上面这张卡片再粘贴一份，改成新项目内容即可】 -->
+    </section>
+
+    <!-- ================= 联系我 ================= -->
+    <section id="contact" class="fade">
+      <h2>联系我</h2>
+      <p class="sub">Contact</p>
+      <div class="card">
+        <p>📧 邮箱：你的邮箱@example.com（<b>【★改这里】</b>）</p>
+        <p>🐙 GitHub：<a href="https://github.com/Sunflower-Li001" target="_blank">github.com/Sunflower-Li001</a>（不用改，这就是你的账号）</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© <span id="year"></span> Sunflower-Li001 · 用 ❤️ 和 GitHub Pages 制作</p>
+  </footer>
+
+  <script>
+    /* ================= 以下都是"小特效"，想改哪段看注释 ================= */
+
+    // 1. 首屏打字机效果：【★想改这里】改成你自己的几句话，会轮流打字显示
+    const phrases = [
+      "欢迎来到我的小站 👋",
+      "编程小白，正在努力升级中",
+      "GitHub 新手，请多关照"
+    ];
+
+    const typingEl = document.getElementById("typing");
+    let phraseIdx = 0, charIdx = 0, deleting = false;
+
+    function typeLoop() {
+      const current = phrases[phraseIdx];
+      typingEl.textContent = current.slice(0, charIdx);
+      if (!deleting) {
+        if (charIdx < current.length) { charIdx++; setTimeout(typeLoop, 110); }
+        else { deleting = true; setTimeout(typeLoop, 1600); }  // 停留 1.6 秒后开始删
+      } else {
+        if (charIdx > 0) { charIdx--; setTimeout(typeLoop, 40); }
+        else { deleting = false; phraseIdx = (phraseIdx + 1) % phrases.length; setTimeout(typeLoop, 400); }
+      }
+    }
+    typeLoop();
+
+    // 2. 向下滚动时，区域淡入出现（自动生效，不用管）
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add("show"); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll(".fade").forEach(el => observer.observe(el));
+
+    // 3. 页脚年份自动更新（自动生效，不用管）
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
