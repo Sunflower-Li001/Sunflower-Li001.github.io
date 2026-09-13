@@ -1,23 +1,30 @@
-# Sunflower-Li001 的个人主页 🌻
+# 幻海 · 个人主页
 
-我的第一个 GitHub 项目！一个用 HTML + CSS + JavaScript 写的个人主页，
-通过 GitHub Pages 免费部署，任何人都可以通过网址访问。
+幻海的独立开发者个人网站，记录对 AI、Web、GitHub 和自动化的关注方向与实践项目。
 
-## 🌐 访问地址
+## 网站
 
-https://Sunflower-Li001.github.io
+访问地址：[Sunflower-Li001.github.io](https://Sunflower-Li001.github.io)
 
-## ✏️ 想改内容？
+## 技术栈
 
-打开 `index.html`，搜索 `【★改这里】`，把对应的文字换成你自己的即可。
-
-## 📦 技术
-
-- HTML
-- CSS
-- JavaScript
+- 原生 HTML、CSS、JavaScript
 - GitHub Pages
 
-## 📅 更新记录
+## 主要功能
 
-- 2026-xx-xx：创建第一个版本 🎉
+- 个人介绍与关注方向展示
+- OpenMAIC、Personal Website 项目展示
+- GitHub 联系入口
+- 响应式布局与深色模式切换
+- 滚动显现和自动更新年份
+
+## 本地运行
+
+在仓库目录启动任意静态文件服务器，例如：
+
+```bash
+python -m http.server 8000
+```
+
+然后访问 <http://localhost:8000>。
